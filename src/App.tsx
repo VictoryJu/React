@@ -8,6 +8,7 @@ function App() {
   let [date,setDate] = useState('날짜')
   let [count,setCount] = useState(0);
   let [index, setIndex] = useState(0);
+  let [insertData,setInsertData] = useState('');
 
   function editTitle(){
     let newArray = [...title];
@@ -33,12 +34,9 @@ function App() {
             )
           })
         }
-
       </div>
 
-      <button onClick={()=>{setIndex(0)}}>버튼1</button>
-      <button onClick={()=>{setIndex(1)}}>버튼2</button>
-      <button onClick={()=>{setIndex(2)}}>버튼3</button>
+      <input onChange={(e)=>{ setInsertData(e.target.value) }} />
 
       <button className='modal-btn' onClick={()=>setIsShow(isShow?false:true)}>모달 출현 버튼</button>
       
