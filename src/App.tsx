@@ -39,17 +39,18 @@ function App() {
       <button className='modal-btn' onClick={()=>setIsShow(isShow?false:true)}>모달 출현 버튼</button>
       
       {
-        isShow ? <Modal></Modal> : null
+        isShow ? <Modal title={title}></Modal> : null
       }
 
     </div>
   );
 }
 
-function Modal(){
+function Modal(pr:any){
+  
   return (
     <div className='modal'>
-      <div>모달창 이름</div>
+      <div>{pr.title[0]}</div>
       <div>날짜</div>
       <div>상세내용</div>
     </div>
