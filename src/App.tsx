@@ -1,15 +1,16 @@
+import { reverse } from 'dns/promises';
 import React,{useState} from 'react';
 import './App.css';
 
 function App() {
 
-  let [title,setTitle] = useState(['리스트1','리스트2','리스트3'])
+  let [title,setTitle] = useState(['리스트3','리스트2','리스트1'])
   let [date,setDate] = useState('날짜')
   let [count,setCount] = useState(0);
 
   function editTitle(){
     let newArray = [...title];
-    newArray[0] = "여자코트 추천";
+    newArray.sort();
     setTitle(newArray);
   }
 
@@ -32,8 +33,21 @@ function App() {
           <div>{date}</div>
         </div>
       </div>
+      
+      <Modal></Modal>
+
     </div>
   );
+}
+
+function Modal(){
+  return (
+    <div className='modal'>
+      <div>모달창 이름</div>
+      <div>날짜</div>
+      <div>상세내용</div>
+    </div>
+  )
 }
 
 export default App;
