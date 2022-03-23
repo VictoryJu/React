@@ -14,6 +14,8 @@ function App() {
     setTitle(newArray);
   }
 
+  let [isShow,setIsShow] = useState(false);
+
 
   return (
     <div className="App">
@@ -33,8 +35,12 @@ function App() {
           <div>{date}</div>
         </div>
       </div>
+
+      <button className='modal-btn' onClick={()=>setIsShow(isShow?false:true)}>모달 출현 버튼</button>
       
-      <Modal></Modal>
+      {
+        isShow ? <Modal></Modal> : null
+      }
 
     </div>
   );
