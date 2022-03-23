@@ -27,7 +27,7 @@ function App() {
         {
           title.map((item,i)=>{
             return(
-              <div className='main-wrap' onClick={()=>setIndex(i)}>
+              <div className='main-wrap' key={i} onClick={()=>setIndex(i)}>
                 <div className="title">{item} <span onClick={()=>setCount(count)}>👍</span> {count} </div>
                 <div>{date}</div>
               </div>
@@ -36,7 +36,7 @@ function App() {
         }
       </div>
 
-      <input onChange={(e)=>{ setInsertData(e.target.value) }} />
+      <input onChange={(e)=>{setInsertData(e.target.value)}} />
 
       <button className='modal-btn' onClick={()=>setIsShow(isShow?false:true)}>모달 출현 버튼</button>
       
