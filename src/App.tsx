@@ -36,7 +36,10 @@ function App() {
         }
       </div>
 
-      <input onChange={(e)=>{setInsertData(e.target.value)}} />
+      <div className='input-line'>
+        <input onChange={(e)=>{setInsertData(e.target.value)}}></input>
+        <button onClick={()=>{setTitle([insertData, ...title])}} >글 발행</button>
+      </div>
 
       <button className='modal-btn' onClick={()=>setIsShow(isShow?false:true)}>모달 출현 버튼</button>
       

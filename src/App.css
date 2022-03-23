@@ -13,6 +13,27 @@
   padding:10px;
 }
 
+.input-line{
+  padding:5px;
+}
+
+.input-line > input{
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  display: block;
+  margin:5px auto;
+}
+
+.input-line > button{
+  width: 100px;
+  height: 30px;
+  display: block;
+  margin:0 auto;
+  background-color: #ccc;
+  border:none
+}
+
 .modal-btn{
   width: 100px;
   height: 40px;
