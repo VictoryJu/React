@@ -7,6 +7,7 @@ function App() {
   let [title,setTitle] = useState(['리스트3','리스트2','리스트1'])
   let [date,setDate] = useState('날짜')
   let [count,setCount] = useState(0);
+  let [index, setIndex] = useState(0);
 
   function editTitle(){
     let newArray = [...title];
@@ -25,8 +26,7 @@ function App() {
         {
           title.map((item,i)=>{
             return(
-              <div className='main-wrap'>
-                <button onClick={editTitle}>제목바꿈 버튼</button>
+              <div className='main-wrap' onClick={()=>setIndex(i)}>
                 <div className="title">{item} <span onClick={()=>setCount(count)}>👍</span> {count} </div>
                 <div>{date}</div>
               </div>
@@ -36,21 +36,25 @@ function App() {
 
       </div>
 
+      <button onClick={()=>{setIndex(0)}}>버튼1</button>
+      <button onClick={()=>{setIndex(1)}}>버튼2</button>
+      <button onClick={()=>{setIndex(2)}}>버튼3</button>
+
       <button className='modal-btn' onClick={()=>setIsShow(isShow?false:true)}>모달 출현 버튼</button>
       
       {
-        isShow ? <Modal title={title}></Modal> : null
+        isShow ? <Modal title={title} index={index}></Modal> : null
       }
 
     </div>
   );
 }
 
-function Modal(pr:any){
+function Modal(props:any){
   
   return (
     <div className='modal'>
-      <div>{pr.title[0]}</div>
+      <div>{props.title[props.index]}</div>
       <div>날짜</div>
       <div>상세내용</div>
     </div>
