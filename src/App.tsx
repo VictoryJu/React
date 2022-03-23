@@ -21,19 +21,19 @@ function App() {
     <div className="App">
       <div className="nav-bar">리액트 튜토리얼</div>
       <div className="main-container">
-        <div className='main-wrap'>
-          <button onClick={editTitle}>제목바꿈 버튼</button>
-          <div className="title">{title[0]} <span onClick={()=>setCount(count+=1)}>👍</span> {count} </div>
-          <div>{date}</div>
-        </div>
-        <div className='main-wrap'>
-          <div className="title">{title[1]}</div>
-          <div>{date}</div>
-        </div>
-        <div className='main-wrap'>
-          <div className="title">{title[2]}</div>
-          <div>{date}</div>
-        </div>
+        
+        {
+          title.map((item,i)=>{
+            return(
+              <div className='main-wrap'>
+                <button onClick={editTitle}>제목바꿈 버튼</button>
+                <div className="title">{item} <span onClick={()=>setCount(count)}>👍</span> {count} </div>
+                <div>{date}</div>
+              </div>
+            )
+          })
+        }
+
       </div>
 
       <button className='modal-btn' onClick={()=>setIsShow(isShow?false:true)}>모달 출현 버튼</button>
