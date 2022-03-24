@@ -1,9 +1,25 @@
 import { reverse } from 'dns/promises';
-import React,{useState} from 'react';
+import React,{useState,useContext, createContext} from 'react';
 import './App.css';
+import Level1 from './module/common/level1';
+
+
+export const AppContext = createContext({
+  status:[
+    {name:'pay',level:10},
+    {name:'stay',level:20},
+  ]
+});
+
+const gamePlayer = {
+  status:[
+    {name:'pay',level:10},
+    {name:'stay',level:20},
+  ]
+};
 
 function App() {
-
+  const [player, setPlayer] = useState(gamePlayer);
   let [title,setTitle] = useState(['리스트3','리스트2','리스트1'])
   let [date,setDate] = useState('날짜')
   let [count,setCount] = useState(0);
@@ -20,41 +36,9 @@ function App() {
 
 
   return (
-    <div className="App">
-      <div className="nav-bar">리액트 튜토리얼</div>
-      <div className="main-container">
-        
-        {
-          title.map((item,i)=>{
-            return(
-              <div className='main-wrap' key={i} onClick={()=>setIndex(i)}>
-                <div className="title">{item} <span onClick={()=>setCount(count)}>👍</span> {count} </div>
-                <div>{date}</div>
-              </div>
-            )
-          })
-        }
-      </div>
-
-      <div className='input-line'>
-        <input onChange={(e)=>{setInsertData(e.target.value)}}></input>
-        {/* 방법 1 */}
-        <button onClick={()=>{setTitle([insertData, ...title])}} >글 발행</button>
-        {/* 방법 2 */}
-        <button onClick={()=>{
-          let titleArr = [...title];
-          titleArr.push(insertData);
-          setTitle(titleArr);
-          }} >글 발행</button>
-      </div>
-
-      <button className='modal-btn' onClick={()=>setIsShow(isShow?false:true)}>모달 출현 버튼</button>
-      
-      {
-        isShow ? <Modal title={title} index={index}></Modal> : null
-      }
-
-    </div>
+    <AppContext.Provider value={player}>
+      <Level1/>
+    </AppContext.Provider>
   );
 }
 
